@@ -15,8 +15,7 @@ export async function POST(request: Request) {
       const body = await request.json() as GenerateImageRequest;
       prompt = body.prompt;
     } catch (e) {
-      console.log(e);
-      return NextResponse.json({ error: 'Invalid JSON in request body' }, { status: 400 });
+      return NextResponse.json({ error: 'Invalid JSON in request body', content: e }, { status: 400 });
     }
 
     if (!prompt) {
